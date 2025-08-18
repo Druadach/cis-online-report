@@ -287,6 +287,32 @@
                 white-space: nowrap;
             }
 
+            /* START: New CSS for mobile modal */
+            .mobile-modal-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: rgba(0, 0, 0, 0.85);
+                z-index: 9999;
+                display: none; /* Hidden by default */
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+
+            .mobile-modal-content {
+                background-color: white;
+                padding: 40px;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                max-width: 400px;
+            }
+            /* END: New CSS for mobile modal */
+
         </style>
     </head>
     <body>
@@ -39998,7 +40024,7 @@
                                         <div><b>噪音（63%）：</b>静音是用户最关注的产品功能，也是第二大差评来源。</div>
                                     </li>
                                     <li><span class="fa-li"><i class="fas fa-check-circle text-green-500"></i></span>
-                                        <div><b>外观设计（33%）：</b>偏好现代、时尚设计，关注冰箱整体颜色协调性，差评多抱怨侧面颜色与面板颜色不匹配、实物色差。</div>
+                                        <div><b>外观设计（33%）：</b>偏好现代、时尚设计，关注冰箱整体颜色协调，差评多抱怨侧面颜色与面板颜色不匹配、实物色差。</div>
                                     </li>
                                     <li><span class="fa-li"><i class="fas fa-check-circle text-green-500"></i></span>
                                         <div><b>容量（24%）：</b>用户第三大关注点，差评多抱怨实际可用容量小于标称容量。</div>
@@ -40110,6 +40136,16 @@
             <i class="fas fa-chevron-right"></i>
         </button>
         
+        <!-- START: New HTML for Mobile Warning Modal -->
+        <div id="mobile-warning-modal" class="mobile-modal-overlay">
+            <div class="mobile-modal-content">
+                <i class="fas fa-desktop text-5xl text-gray-600 mb-4"></i>
+                <h2 class="text-2xl font-bold text-gray-800">请在电脑端访问</h2>
+                <p class="text-gray-600 mt-2">为确保最佳浏览效果，请使用桌面电脑访问此报告。</p>
+            </div>
+        </div>
+        <!-- END: New HTML for Mobile Warning Modal -->
+
         <script>
             let currentSlideIndex = 1;
             const totalSlides = 9;
@@ -40765,6 +40801,15 @@
             const month = String(now.getMonth() + 1).padStart(2, '0');
             const day = String(now.getDate()).padStart(2, '0');
             document.getElementById('report-date').textContent = `${year}年${month}月${day}日`;
+
+            // START: New JS for Mobile Warning Modal
+            if (window.innerWidth < 768) {
+                const modal = document.getElementById('mobile-warning-modal');
+                if (modal) {
+                    modal.style.display = 'flex';
+                }
+            }
+            // END: New JS for Mobile Warning Modal
         </script>
     </body>
     </html>
