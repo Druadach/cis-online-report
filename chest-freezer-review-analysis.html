@@ -23093,11 +23093,6 @@
                 });
             });
             
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = String(now.getMonth() + 1).padStart(2, '0');
-            const day = String(now.getDate()).padStart(2, '0');
-            document.getElementById('report-date').textContent = `${year}年${month}月${day}日`;
 
             // START: New JS for Mobile Warning Modal
             if (window.innerWidth < 768) {
